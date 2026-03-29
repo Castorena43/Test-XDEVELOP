@@ -10,7 +10,6 @@ export async function GET(req: Request) {
 
     const data = await apiRequest<ReqResUsersResponse>(`/users?page=${page}`, {
       method: "GET",
-      cache: "no-store",
     });
 
     const response = NextResponse.json(

@@ -7,7 +7,6 @@ export async function GET(req: Request) {
 
     const res = await fetch(`${BASE_URL}/search.json?${searchParams.toString()}`, {
       method: "GET",
-      cache: "no-store",
     });
     const data = await res.json();
     const response = NextResponse.json(

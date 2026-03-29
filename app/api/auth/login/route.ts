@@ -17,7 +17,6 @@ export async function POST(req: Request) {
     const data = await apiRequest<LoginResponse>("/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
-      cache: "no-store",
     });
 
     const response = NextResponse.json(

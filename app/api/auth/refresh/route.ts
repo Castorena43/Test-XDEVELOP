@@ -16,7 +16,6 @@ export async function POST(req: NextRequest) {
     const data = await apiRequest<VerifyResponse>("/verify", {
       method: "POST",
       body: JSON.stringify({ token }),
-      cache: "no-store",
       credentials: "include"
     });
 
