@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 const BASE_URL = process.env.API_POSTS;
 
-export async function GET(req: NextRequest, {params}: {params: {id:number}}) {
+export async function GET(req: NextRequest, {params}: {params: Promise<{id:string}>}) {
   try {
     const {id} = await params;
 
     const url = new URL(`${BASE_URL}/posts`);
 
-    if (id > 0) {
+    if (+id > 0) {
       url.searchParams.set("userId", String(id));
     }
     
