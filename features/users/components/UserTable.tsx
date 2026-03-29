@@ -6,7 +6,6 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { useRouter } from "next/navigation";
 import { UserRole, UserWithRole } from "../types/user.types";
 
 const getRoleBadgeClasses = (role: UserRole) => {
@@ -23,7 +22,6 @@ export function UsersTable({
 }: {
   data: UserWithRole[];
 }) {
-  const router = useRouter();
 
   const columns: ColumnDef<UserWithRole>[] = [
     {

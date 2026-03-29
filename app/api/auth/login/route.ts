@@ -14,14 +14,11 @@ export async function POST(req: Request) {
       );
     }
 
-    // const data = await apiRequest<LoginResponse>("/login", {
-    //   method: "POST",
-    //   body: JSON.stringify({ email, password }),
-    //   cache: "no-store",
-    // });
-    const data = {
-      token: 'kdjskdskd'
-    }
+    const data = await apiRequest<LoginResponse>("/login", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      cache: "no-store",
+    });
 
     const response = NextResponse.json(
       { ok: true, message: "Login exitoso.", token: data.token, expiresAt: Date.now() + 60 * 60 * 24 * 7 },

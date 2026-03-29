@@ -14,6 +14,12 @@ export interface UserWithRole extends User {
   role: UserRole;
 }
 
+export interface ReqResResponse {
+  data: ReqResUsersResponse,
+  ok: boolean;
+  message: string;
+}
+
 export interface ReqResUsersResponse {
   page: number;
   per_page: number;

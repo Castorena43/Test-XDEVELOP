@@ -6,8 +6,8 @@ export const useUsersByPage = (
   page: number,
 ) => {
   return useQuery({
-    queryKey: ["users", { page }],
-    queryFn: () => getUsersByPageAction(+page),
-    staleTime: 1000 * 60 * 5, // 5 minutos
+    queryKey: ["users", page],
+    queryFn: () => getUsersByPageAction(page),
+    staleTime: 1000 * 60 * 1, // 5 minutos
   });
 };

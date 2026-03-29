@@ -20,7 +20,7 @@ export async function GET(req: Request) {
 
     return response;
   } catch (error) {
-    const message = error instanceof Error ? error.message : "No se pudo iniciar sesión.";
+    const message = error instanceof Error ? error.message : "No se pudo obtener sesión.";
     return NextResponse.json(
       { message },
       { status: 500 }
