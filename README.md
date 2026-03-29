@@ -29,5 +29,12 @@ pnpm dev
 bun dev
 ```
 
+Credentials for access login
+
+```
+email: eve.holt@reqres.in
+password: eve.holt@reqres.in
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
