@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/navbar/Navbar";
 import { Providers } from "./providers";
+import { Toaster } from "@/components/ui/sonner"
 
 export default function DashboardLayout({
   children,
@@ -12,6 +13,7 @@ export default function DashboardLayout({
       <div className="min-h-screen flex">
         {/* SIDEBAR */}
         <Navbar />
+        <Toaster position="top-right" />
         {/* CONTENT */}
         <main className="flex-1 p-6 bg-muted/40">
           {children}

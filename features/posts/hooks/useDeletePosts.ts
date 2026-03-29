@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deletePosts } from "../services/deletePost";
 import { usePostsStore } from "../store/posts.store";
-
+import { toast } from 'sonner';
 
 export const useDeletePosts = () => {
   
@@ -12,6 +12,10 @@ export const useDeletePosts = () => {
     onSuccess: (_data, id) => {
       markDeleted(id!);
       queryClient.invalidateQueries({ queryKey: ["posts"] });
+      toast('Se ha eliminado la publicacion exitosamente')
+    },
+    onError: () => {
+      toast('Error al eliminar la publicacion')
     }
   });
 };
