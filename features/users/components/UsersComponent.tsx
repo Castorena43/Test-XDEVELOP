@@ -4,9 +4,10 @@ import { PaginationComponent } from "@/components/pagination/pagination";
 import UserFilter from "./UserFilter";
 import { UsersTable } from "./UserTable";
 import { FormFilters } from "../types/user.types";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useUsersByPage } from "../hooks/useUsersByPage";
+import { useFilteredUsers } from "../hooks/useFilteredUsers";
 
 
 export default function UsersComponent ({page}: {page: number}) {
@@ -16,16 +17,9 @@ export default function UsersComponent ({page}: {page: number}) {
     role: 'all'
 });
 
-  const { data: usersResponse } = useUsersByPage(page);
+  const { data: users } = useUsersByPage(page);
 
-  const filteredUsers = useMemo(() => {
-    if (!usersResponse?.data || allDeleted) return [];
-
-    return usersResponse.data.filter(u => {
-      return (!filters.search || `${u.first_name} ${u.last_name}`.includes(filters.search)) 
-        && (filters.role === 'all' || !filters.role ? true : u.role === filters.role)
-    });
-  }, [usersResponse, filters, allDeleted]);
+  const filteredUsers = useFilteredUsers({users: users?.data, filters, allDeleted});
 
   const deleteUsers = () => {
     localStorage.setItem("usersDeleted", "true");
@@ -41,7 +35,7 @@ export default function UsersComponent ({page}: {page: number}) {
       <UsersTable data={filteredUsers}/>
 
       <PaginationComponent
-        totalPages={allDeleted ? 1 : usersResponse?.totalPages ?? 1}
+        totalPages={allDeleted ? 1 : users?.totalPages ?? 1}
       />
     </>
   )
